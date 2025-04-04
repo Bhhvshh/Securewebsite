@@ -20,7 +20,7 @@ const Header = () => {
     <nav className='navbar navbar-expand-lg bg-primary'>
       <div className='container-fluid'>
         <Link className='navbar-brand' to='/'>
-          Blog Website
+          SecureStorage
         </Link>
         <button
           className='navbar-toggler'
@@ -42,12 +42,12 @@ const Header = () => {
             </li>
             <li className='nav-item'>
               <Link className='nav-link' to='/add-blog'>
-                Add Blog
+                Store data
               </Link>
             </li>
             <li className='nav-item'>
               <Link className='nav-link' to='/add-category'>
-                Add Category
+                Add Type
               </Link>
             </li>
           </ul>

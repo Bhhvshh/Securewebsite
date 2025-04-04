@@ -29,7 +29,7 @@ const Home = () => {
         <div className='container shadow-lg'>
           <section className='text-center'>
             <h2 className='mb-5 my-3'>
-              <strong>Latest Post</strong>
+              <strong>all Stored data</strong>
             </h2>
             <div className='row'>
               {blogs && blogs.length > 0 ? (
@@ -66,9 +66,9 @@ const Home = () => {
       </main>
       <footer className='bg-primary text-lg-start'>
         <div className='text-center p-3 text-white' style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}>
-          &copy; 2024{' '}
+          &copy; 2025{' '}
           <a className='text-white mx-2' href='https://bhavy.netlify.app/'>
-            Bhavy Zala
+            Bhavesh Vaniya || Vishwa Makwana
           </a>
         </div>
       </footer>

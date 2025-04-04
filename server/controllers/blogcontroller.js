@@ -25,7 +25,6 @@ class BlogController
             title : title,
             description:description,
             category:category,
-            thumbnail:req.file.filename,
             user: req.user._id,
           });
 
@@ -33,11 +32,11 @@ class BlogController
           
           if(savedBlog)
           {
-            return res.status(200).json({message:"Blog added Succesfully"});
+            return res.status(200).json({message:"Blog added Successfully"});
           }
 
        }
-       else return res.status(400).json({message:"All fileds are require"});
+       else return res.status(400).json({message:"All fields are required"});
    }
    catch(error)
    {

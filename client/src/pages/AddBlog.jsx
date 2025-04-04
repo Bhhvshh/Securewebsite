@@ -66,7 +66,7 @@ const AddBlog = () => {
 
   return (
     <div className='container shadow'>
-      <h2 className='text-center my-3'>Add a New Blog</h2>
+      <h2 className='text-center my-3'>Add new encrypted data</h2>
       <div className='col-xl-12 my-3 d-flex items-center justify-content-center'>
         <div className='row'>
           <form onSubmit={handleSubmit}>
@@ -86,7 +86,7 @@ const AddBlog = () => {
             </div>
             <div className='mb-3'>
               <label htmlFor='category' className='form-label'>
-                Category
+                type
               </label>
               <select
                 className='form-control'
@@ -94,7 +94,7 @@ const AddBlog = () => {
                 onChange={handleChange}
               >
                 <option disabled selected>
-                  Select Category
+                  Select Type
                 </option>
                 {categories && categories.map((item) => {
                   return <option value={item._id}>{item.title}</option>
@@ -103,7 +103,7 @@ const AddBlog = () => {
             </div>
             <div className='mb-3'>
               <label htmlFor='description' className='form-label'>
-                Description
+                text
               </label>
               <textarea
                 name='description'

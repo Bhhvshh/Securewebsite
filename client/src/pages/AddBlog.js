@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const AddBlog = () => {
-  
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const [input, setInput] = useState({
@@ -11,22 +10,20 @@ const AddBlog = () => {
     description: "",
     category: ""
   });
-  const [file,setFile] = useState([]);
 
   useEffect(() => {
     const fetchAllCategories = async () => {
       try {
         const res = await axios.get("http://localhost:9000/api/v1/get/catagories", {
           headers: {
-            "Authorization" : `Bearer ${localStorage.getItem("token")}`,
+            "Authorization": `Bearer ${localStorage.getItem("token")}`,
           },
-        }
-      );
+        });
         setCategories(res.data);
       } catch (error) {
         console.error("Error fetching categories:", error);
         alert("Failed to fetch categories");
-      } 
+      }
     };
     fetchAllCategories();
   }, []);
@@ -35,28 +32,24 @@ const AddBlog = () => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-
-  //creating a form data
-
-  const formdata = new FormData();
-  formdata.append("title",input.title);
-  formdata.append("category",input.category);
-  formdata.append("description",input.description);
-  formdata.append("thumbnail",file);
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const formData = new FormData();
+      formData.append("title", input.title);
+      formData.append("category", input.category);
+      formData.append("description", input.description);
+
       const res = await axios.post("http://localhost:9000/api/v1/add/blog",
-        formdata,
+        formData,
         {
           headers: {
-            "Authorization" : `Bearer ${localStorage.getItem("token")}`,
+            "Authorization": `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "multipart/form-data",
           },
         }
       );
-      alert(res.data.message);
+      alert("Data is securely stored");
       navigate("/");
     } catch (error) {
       console.error("Error adding blog:", error);
@@ -66,7 +59,7 @@ const AddBlog = () => {
 
   return (
     <div className='container shadow'>
-      <h2 className='text-center my-3'>Add a New Blog</h2>
+      <h2 className='text-center my-3'>Store new encrypted data</h2>
       <div className='col-xl-12 my-3 d-flex items-center justify-content-center'>
         <div className='row'>
           <form onSubmit={handleSubmit}>
@@ -81,12 +74,12 @@ const AddBlog = () => {
                 onChange={handleChange}
                 className='form-control'
                 id='title'
-                placeholder='Blog Title'
+                placeholder='Enter data title'
               />
             </div>
             <div className='mb-3'>
               <label htmlFor='category' className='form-label'>
-                Category
+                Type
               </label>
               <select
                 className='form-control'
@@ -94,42 +87,29 @@ const AddBlog = () => {
                 onChange={handleChange}
               >
                 <option disabled selected>
-                  Select Category
+                  Select type
                 </option>
                 {categories && categories.map((item) => {
                   return <option value={item._id}>{item.title}</option>
-})}
+                })}
               </select>
             </div>
             <div className='mb-3'>
               <label htmlFor='description' className='form-label'>
-                Description
+                Text
               </label>
               <textarea
                 name='description'
                 value={input.description}
                 onChange={handleChange}
-                placeholder='Blog Description'
+                placeholder='Enter the text'
                 className='form-control'
                 id='description'
               />
             </div>
             <div className='mb-3'>
-              <label htmlFor='thumbnail' className='form-label'>
-                Thumbnail
-              </label>
-              <input
-                type='file'
-                name='thumbnail'
-                onChange={(e)=>setFile(e.target.files[0])}
-                className='form-control'
-                id='thumbnail'
-                placeholder='Select Thumbnail'
-              />
-            </div>
-            <div className='mb-3'>
               <button type='submit' className='btn btn-primary btn-block'>
-                Add Blog
+                store data
               </button>
             </div>
           </form>

@@ -29,7 +29,7 @@ const Home = () => {
         <div className='container shadow-lg'>
           <section className='text-center'>
             <h2 className='mb-5 my-3'>
-              <strong>Latest Post</strong>
+              <strong>All stored data</strong>
             </h2>
             <div className='row'>
               {blogs && blogs.length > 0 ? (
@@ -52,7 +52,7 @@ const Home = () => {
                       <p className='card-text mb-2 mt-2'>{item.description}</p>
                       
                       <Link to={`/blog/${item._id}`} className='btn btn-primary'>
-                        Read More
+                        Read in details
                       </Link>
                     </div>
                   </div>
@@ -66,9 +66,9 @@ const Home = () => {
       </main>
       <footer className='bg-primary text-lg-start'>
         <div className='text-center p-3 text-white' style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}>
-          &copy; 2024{' '}
+          &copy; 2025{' '}
           <a className='text-white mx-2' href='https://bhavy.netlify.app/'>
-            Bhavy Zala
+            Bhavesh vaniya || Vishwa Makwana
           </a>
         </div>
       </footer>

@@ -54,7 +54,7 @@ const SingleBlog = () => {
           </div>
         </div>
         <button onClick={() => navigate("/")} className='btn btn-primary'>
-          Back To Posts
+          Back To stored data
         </button>
       </div>
     </>
