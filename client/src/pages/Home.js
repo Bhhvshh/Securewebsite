@@ -64,13 +64,15 @@ const Home = () => {
           </section>
         </div>
       </main>
-      <footer className='bg-primary text-lg-start'>
-        <div className='text-center p-3 text-white' style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}>
-          &copy; 2025{' '}
-          <a className='text-white mx-2' href='https://bhavy.netlify.app/'>
-            Bhavesh vaniya || Vishwa Makwana
-          </a>
-        </div>
+      <footer className='text-lg-start' style={{
+        backgroundColor: "#28a745", // Green color
+        color: "#fff",
+        padding: "10px",
+        textAlign: "center",
+        borderRadius: "5px",
+        marginTop: "20px"
+      }}>
+        <p>&copy; 2025 Secure Website. Bhavesh Vaniay || Vishwa Makwana.</p>
       </footer>
     </>
   );

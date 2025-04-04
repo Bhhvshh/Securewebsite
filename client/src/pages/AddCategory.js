@@ -29,7 +29,7 @@ const AddCategory = () => {
   return (
     <div className='container shadow' style={{
       borderRadius: "10px",
-      backgroundColor: "#ffe4e1", // Light pink background color
+      backgroundColor: "#e0ffff", // Cyan background color
       padding: "20px",
     }}>
       <h2 className='text-center my-3' style={{ color: "#333" }}>Add a New Type</h2>
