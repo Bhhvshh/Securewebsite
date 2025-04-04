@@ -7,17 +7,15 @@ const secretKey = crypto.createHash("sha256").update("my_secret_key").digest(); 
 const encrypt = (text) => {
   const iv = crypto.randomBytes(16); // Generate a new IV for each encryption
   const cipher = crypto.createCipheriv(algorithm, secretKey, iv);
-  let encrypted = cipher.update(text, "utf8", "hex");
-  encrypted += cipher.final("hex");
-  return `${iv.toString("hex")}:${encrypted}`; // Store IV with the encrypted text
+  const encrypted = Buffer.concat([cipher.update(text, "utf8"), cipher.final()]);
+  return `${iv.toString("hex")}:${encrypted.toString("hex")}`; // Store IV with the encrypted text
 };
 
 const decrypt = (text) => {
-  const [ivHex, encryptedText] = text.split(":");
+  const [ivHex, encryptedHex] = text.split(":");
   const decipher = crypto.createDecipheriv(algorithm, secretKey, Buffer.from(ivHex, "hex"));
-  let decrypted = decipher.update(encryptedText, "hex", "utf8");
-  decrypted += decipher.final("utf8");
-  return decrypted;
+  const decrypted = Buffer.concat([decipher.update(Buffer.from(encryptedHex, "hex")), decipher.final()]);
+  return decrypted.toString("utf8");
 };
 
 const blogSchema = new mongoose.Schema({
@@ -31,9 +29,6 @@ const blogSchema = new mongoose.Schema({
   description: {
     type: String,
   },
-  thumbnail: {
-    type: String,
-  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
@@ -41,13 +36,17 @@ const blogSchema = new mongoose.Schema({
 });
 
 blogSchema.pre("save", function (next) {
-  if (this.isModified("description")) this.description = encrypt(this.description);
+  if (this.isModified("description")) {
+    this.description = encrypt(this.description);
+  }
   next();
 });
 
 blogSchema.post("find", function (docs) {
   docs.forEach((doc) => {
-    if (doc.description) doc.description = decrypt(doc.description);
+    if (doc.description) {
+      doc.description = decrypt(doc.description);
+    }
   });
 });
 
