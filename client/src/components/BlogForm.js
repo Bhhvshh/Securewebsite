@@ -17,7 +17,10 @@
     value={formData.category}
     onChange={handleChange}
   >
+    <option disabled selected>
+      Select type
+    </option>
     {/* ...options... */}
   </select>
-  <button type="submit">store data</button>
+  <button type="submit">Add Blog</button>
 </form>

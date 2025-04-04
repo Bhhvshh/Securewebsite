@@ -20,20 +20,24 @@ const AddCategory = () => {
           },
         }
        );
-       alert(res.data.message);
+       alert("New type added");
        navigate("/");
     } catch (error) {
       alert(error.response.data.message);
     }
   }
   return (
-    <div className='container shadow'>
-      <h2 className='text-center my-3'>Add a New Type</h2>
+    <div className='container shadow' style={{
+      borderRadius: "10px",
+      backgroundColor: "#ffe4e1", // Light pink background color
+      padding: "20px",
+    }}>
+      <h2 className='text-center my-3' style={{ color: "#333" }}>Add a New Type</h2>
       <div className='col-xl-12 my-3 d-flex items-center justify-content-center'>
         <div className='row'>
           <form onSubmit={handleCategory}>
             <div className='mb-3'>
-              <label htmlFor='categoryName' className='form-label'>
+              <label htmlFor='categoryName' className='form-label' style={{ color: "#555" }}>
                 Type Name
               </label>
               <input
@@ -44,10 +48,15 @@ const AddCategory = () => {
                 className='form-control'
                 id='categoryName'
                 placeholder='Type Name'
+                style={{ borderRadius: "5px" }}
               />
             </div>
             <div className='mb-3'>
-              <button type='submit' className='btn btn-primary btn-block'>
+              <button type='submit' className='btn btn-block' style={{
+                backgroundColor: "#28a745", // Green button
+                color: "#fff",
+                borderRadius: "5px"
+              }}>
                 Add Type
               </button>
             </div>
