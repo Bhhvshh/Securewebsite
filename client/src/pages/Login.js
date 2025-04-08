@@ -42,7 +42,7 @@ const Login = () => {
 
     if (isRegistered) {
       try {
-        const res = await axios.post('http://localhost:9000/api/v1/user/register', {
+        const res = await axios.post('https://securewebsite.onrender.com/api/v1/user/register', {
           username: input.username,
           email: input.email,
           password: input.password
@@ -56,7 +56,7 @@ const Login = () => {
     } else {
     
       try {
-        const res = await axios.post('http://localhost:9000/api/v1/user/login', {
+        const res = await axios.post('https://securewebsite.onrender.com/api/v1/user/login', {
           email: input.email,
           password: input.password
         });
@@ -85,7 +85,7 @@ const Login = () => {
   
     try {
       console.log("Verifying OTP for email:", input.email, "and OTP:", input.otp);
-      const res = await axios.post('http://localhost:9000/api/v1/user/verify-otp', {
+      const res = await axios.post('https://securewebsite.onrender.com/api/v1/user/verify-otp', {
         email: input.email,
         otp: input.otp
       });

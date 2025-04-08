@@ -13,7 +13,7 @@ const SingleBlog = () => {
     const fetchSingleBlog = async () => {
      
       try {
-        const res = await axios.get(`http://localhost:9000/api/v1/get/blog/${id}`, {
+        const res = await axios.get(`https://securewebsite.onrender.com/api/v1/get/blog/${id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -46,7 +46,7 @@ const SingleBlog = () => {
             <h1 className='my-3'>{blog.title}</h1>
 
             <img
-              src={`http://localhost:9000/upload/${blog.thumbnail}`}
+              src={`https://securewebsite.onrender.com/upload/${blog.thumbnail}`}
               className='img img-responsive img-rounded my-3'
               alt={blog?.title}
             />

@@ -13,7 +13,7 @@ const AddCategory = () => {
   {
     e.preventDefault();
     try {
-       const res = await axios.post("http://localhost:9000/api/v1/add/catagory",input,
+       const res = await axios.post("https://securewebsite.onrender.com/api/v1/add/catagory",input,
         {
           headers:{
             Authorization: `Bearer ${localStorage.getItem("token")}`,
