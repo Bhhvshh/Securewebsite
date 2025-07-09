@@ -10,9 +10,9 @@
 - **Token Management**: Unique tokens validate user requests and expire after the set period.  
 - **Password Protection**: Securely encrypted passwords reduce database attack risks.
 
-### 3. Posting & Blog Management
-- **Content Addition**: Users can create and manage posts/blogs by topic.  
-- **Category-Based Organization**: Easy browsing and searching via categorized content.
+### 3. Storing Data
+- **Store data**: Users can store data securely.  
+
 
 ### 4. Session & Access Control
 - **Token-Based Access**: Posts and blogs are accessible only with valid tokens.  
